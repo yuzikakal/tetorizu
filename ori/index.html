@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tetris Responsive</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="icons/icon-152x152.png" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: monospace;
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #scoreboard, .help {
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: left;
+      color: white;
+    }
+
+    canvas {
+      border: 1px solid white;
+      width: 90vw;
+      /* 90% dari lebar layar */
+      height: 90vh;
+      /* 90% dari tinggi layar */
+      max-width: 320px;
+      max-height: 640px;
+      background-color: black;
+    }
+
+    .gap {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .gap button {
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 800px) {
+      #scoreboard {
+        font-size: 18px;
+      }
+
+      canvas {
+        width: 70vw;
+        height: 70vh;
+      }
+
+      .gap button {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div id="scoreboard">Score: 0</div>
+    <a href="#" class="help">Help</a>
+  </header>
+  <canvas id="game" width="320" height="640"></canvas>
+
+  <div class="gap">
+    <button type="button" onclick="moveLeft()" class="btn btn-outline-light">
+      &lt;
+    </button>
+    <button type="button" onclick="hardDrop()" class="btn btn-outline-light">
+      v
+    </button>
+    <button type="button" onclick="rotatePiece()" class="btn btn-outline-light">
+      ^
+    </button>
+    <button type="button" onclick="moveRight()" class="btn btn-outline-light">
+      &gt;
+    </button>
+    <button type="button" onclick="togglePause()" class="btn btn-warning">
+      ||
+    </button>
+  </div>
+
+  <script src="app.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../sw.js')
+          .then((reg) => console.log('Service Worker registered successfully!', reg))
+          .catch((err) => console.error('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

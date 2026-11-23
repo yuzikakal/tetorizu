@@ -1,12 +1,16 @@
-const CACHE_NAME = 'tetorizu-v1';
+// const CACHE_NAME = 'tetorizu-v1';
+const CACHE_NAME = 'tetorizu-v2';
 
 // Daftar file yang akan disimpan ke cache untuk akses offline
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-//   './tetris.html',
+  './tetris.js',
+  './ori/index.html',
+  './ori/app.js',
   './manifest.json',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js',
   './icons/icon-48x48.png',
   './icons/icon-72x72.png',
   './icons/icon-96x96.png',
