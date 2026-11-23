@@ -92,7 +92,7 @@
     <button type="button" onclick="moveLeft()" class="btn btn-outline-light">
       &lt;
     </button>
-    <button type="button" onclick="moveDown()" class="btn btn-outline-light">
+    <button type="button" onclick="hardDrop()" class="btn btn-outline-light">
       v
     </button>
     <button type="button" onclick="rotatePiece()" class="btn btn-outline-light">
@@ -313,6 +313,19 @@
       }
       tetromino.row = row;
     }
+    
+    function hardDrop() {
+  if (gameOver || isPaused) return;
+
+  // Turunkan terus sampai tidak bisa turun lagi
+  while (isValidMove(tetromino.matrix, tetromino.row + 1, tetromino.col)) {
+    tetromino.row++;
+  }
+
+  // Langsung kunci ke playfield & spawn piece baru
+  placeTetromino();
+    }
+    
     function togglePause() {
       if (gameOver) return;
       isPaused = !isPaused;
