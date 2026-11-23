@@ -15,6 +15,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
+    :root {
+      /* Ambil ukuran terkecil antara:
+         1. Tinggi layar dikurangi ruang header & tombol (~155px)
+         2. 2x dari 88% lebar layar (agar tidak melebar keluar layar)
+         3. Maksimal 640px */
+      --board-h: min(calc(100dvh - 155px), 176vw, 640px);
+      --board-w: calc(var(--board-h) / 2);
+    }
+
     html,
     body {
       height: 100dvh;
@@ -26,16 +35,13 @@
     }
 
     .game-container {
-      width: fit-content;
-      max-width: 95vw;
+      width: var(--board-w);
     }
 
     canvas#game {
-      width: auto;
-      max-width: 95vw;
-      height: calc(100dvh - 150px);
-      max-height: 640px;
-      aspect-ratio: 1 / 2;
+      width: var(--board-w);
+      height: var(--board-h);
+      display: block;
       background-color: #000;
       touch-action: none;
     }
@@ -58,9 +64,8 @@
     }
 
     @media (min-width: 800px) {
-      canvas#game {
-        height: calc(100dvh - 80px);
-        max-height: 640px;
+      :root {
+        --board-h: min(calc(100dvh - 80px), 640px);
       }
       .mobile-controls {
         display: none !important;
