@@ -1,5 +1,5 @@
 // const CACHE_NAME = 'tetorizu-v1';
-const CACHE_NAME = 'tetorizu-v2';
+const CACHE_NAME = 'tetorizu-v2.2';
 
 // Daftar file yang akan disimpan ke cache untuk akses offline
 const ASSETS_TO_CACHE = [
